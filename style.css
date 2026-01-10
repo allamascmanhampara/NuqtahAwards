@@ -793,10 +793,20 @@ body {
   gap: 0.5rem;
 }
 
+.view-details-btn svg {
+  width: 16px;
+  height: 16px;
+  transition: var(--transition-smooth);
+}
+
 .view-details-btn:hover {
   background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
   color: var(--dark-bg);
   border-color: transparent;
+}
+
+.view-details-btn:hover svg {
+  transform: translateY(2px);
 }
 
 .entry-details {
@@ -1016,6 +1026,129 @@ body {
   font-size: 1.2rem !important;
 }
 
+/* E-CERTIFICATE SECTION */
+.certificate-download-section {
+  margin: 4rem 0;
+}
+
+.certificate-download-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.certificate-description {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+}
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.certificate-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.certificate-card:hover::before {
+  opacity: 1;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 136, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 255, 136, 0.2);
+}
+
+.certificate-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: rgba(0, 255, 136, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-bounce);
+}
+
+.certificate-card:hover .certificate-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
+}
+
+.certificate-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: #00ff88;
+  transition: var(--transition-smooth);
+}
+
+.certificate-card:hover .certificate-icon svg {
+  stroke: var(--dark-bg);
+}
+
+.certificate-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.certificate-label {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  margin-bottom: 1rem;
+}
+
+.download-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #00ff88;
+  font-weight: 500;
+}
+
+.download-indicator svg {
+  width: 16px;
+  height: 16px;
+  transition: var(--transition-smooth);
+}
+
+.certificate-card:hover .download-indicator svg {
+  transform: translateY(3px);
+}
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .jury-card {
@@ -1030,4 +1163,147 @@ body {
 }
 
 @media (max-width: 768px) {
-  .header-cont
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .progress-indicator {
+    gap: 0.5rem;
+  }
+  
+  .progress-step span {
+    font-size: 0.7rem;
+  }
+  
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 0.75rem;
+  }
+  
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .entries-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+  }
+  
+  .nav-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .glass-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .landing-title {
+    margin-bottom: 1.5rem;
+  }
+  
+  .title-main {
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+  
+  .title-sub {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+  }
+  
+  .view-results-btn {
+    padding: 1rem 2.5rem;
+  }
+  
+  .category-header h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+}
+
+/* SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth;
+}
+
+/* SELECTION */
+::selection {
+  background: rgba(0, 255, 136, 0.3);
+  color: var(--text-primary);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 136, 0.3);
+}
+
+/* GRADIENT DEFINITIONS FOR SVG */
+svg defs {
+  position: absolute;
+}
+
+/* LOADING ANIMATION */
+@keyframes shimmerLoad {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading {
+  animation: shimmerLoad 2s infinite;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  background-size: 1000px 100%;
+}
+
+/* FOCUS STATES */
+button:focus-visible,
+.award-nav-card:focus-visible {
+  outline: 2px solid #00ff88;
+  outline-offset: 4px;
+}
+
+/* PRINT STYLES */
+@media print {
+  .landing-page,
+  .gradient-orb,
+  .navigation-buttons,
+  .progress-indicator {
+    display: none !important;
+  }
+  
+  .results-page {
+    display: block !important;
+  }
+  
+  .glass-card {
+    border: 1px solid #ccc;
+    background: white;
+    color: black;
+  }
+}
