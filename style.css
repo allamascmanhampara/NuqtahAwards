@@ -298,8 +298,14 @@ body {
   font-size: 0.9rem;
 }
 
-.criteria-icon {
-  font-size: 1.2rem;
+.criteria-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--primary-green);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .criteria-name {
