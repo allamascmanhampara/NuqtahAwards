@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nuqtah Calligraphy Awards 2025</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Italiana&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -24,20 +26,25 @@
     </div>
 
     <h1 class="landing-title">
-      <span class="title-word">NUQTAH</span>
-      <span class="title-word">CALLIGRAPHY</span>
-      <span class="title-word">AWARDS</span>
+      <span class="title-main">Nuqtah</span>
+      <span class="title-sub">Calligraphy Awards</span>
       <span class="title-year">2025</span>
     </h1>
 
     <div class="landing-subtitle-container">
-      <p class="landing-subtitle">ALLAMA SC MANHAMPARA</p>
-      <div class="subtitle-line"></div>
+      <p class="landing-subtitle">Allama SC Manhampara</p>
+      <div class="subtitle-ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-dot"></div>
+        <div class="ornament-line"></div>
+      </div>
     </div>
 
-    <button class="view-results-btn" onclick="showResults()">
-      <span class="btn-text">VIEW RESULTS</span>
-      <div class="btn-glow"></div>
+    <button class="view-results-btn" id="viewResultsBtn">
+      <span class="btn-text">View Results</span>
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </button>
   </div>
 </div>
@@ -53,167 +60,301 @@
     
     <!-- Header -->
     <header class="header">
-      <div class="header-glass">
+      <div class="header-content">
         <img src="allama-logo.png" alt="Allama SC" class="header-logo">
-        <h1>Nuqtah Award Results</h1>
-        <p class="subtitle">Allama SC Manhampara</p>
+        <div class="header-text">
+          <h1>Nuqtah Award Results</h1>
+          <p class="subtitle">Allama SC Manhampara · 2025</p>
+        </div>
       </div>
     </header>
 
-    <!-- Judging Criteria -->
-    <section class="criteria-section glass-card">
-  <h3>Judging Criteria</h3>
-
-  <div class="criteria-grid">
-
-    <div class="criteria-item">
-      <span class="criteria-icon">
-        <svg viewBox="0 0 24 24"><path d="M6 18L18 6"/><circle cx="7" cy="17" r="1.5"/></svg>
-      </span>
-      <span class="criteria-name">Letter Formation</span>
-    </div>
-
-    <div class="criteria-item">
-      <span class="criteria-icon">
-        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
-      </span>
-      <span class="criteria-name">Composition</span>
-    </div>
-
-    <div class="criteria-item">
-      <span class="criteria-icon">
-        <svg viewBox="0 0 24 24"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
-      </span>
-      <span class="criteria-name">Readability</span>
-    </div>
-
-    <div class="criteria-item">
-      <span class="criteria-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="M6 6l3 3M15 15l3 3M6 18l3-3M15 9l3-3"/></svg>
-      </span>
-      <span class="criteria-name">Creativity</span>
-    </div>
-
-    <div class="criteria-item">
-      <span class="criteria-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></svg>
-      </span>
-      <span class="criteria-name">Overall Finish</span>
-    </div>
-
-  </div>
-</section>
-    <!-- Award Categories -->
-    <section class="awards-section">
-      <h2 class="section-title">Award Categories</h2>
-      <div class="awards-grid">
-        
-        <div class="award-category glass-card gold" onclick="showCategory('first')">
-          <div class="award-badge">
-            <span class="medal">🥇</span>
-          </div>
-          <h3>I Place</h3>
-          <p>Top Excellence</p>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="progressIndicator">
+      <div class="progress-step active" data-step="overview">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12L9 18L21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-
-        <div class="award-category glass-card silver" onclick="showCategory('second')">
-          <div class="award-badge">
-            <span class="medal">🥈</span>
-          </div>
-          <h3>II Place</h3>
-          <p>Outstanding Achievement</p>
-        </div>
-
-        <div class="award-category glass-card bronze" onclick="showCategory('third')">
-          <div class="award-badge">
-            <span class="medal">🥉</span>
-          </div>
-          <h3>III Place</h3>
-          <p>Exceptional Merit</p>
-        </div>
-
-        <div class="award-category glass-card certificate" onclick="showCategory('certificates')">
-          <div class="award-badge">
-            <span class="medal">🎓</span>
-          </div>
-          <h3>Certificates</h3>
-          <p>All Participants</p>
-        </div>
-
+        <span>Overview</span>
       </div>
+      <div class="progress-step" data-step="first">
+        <div class="step-circle">1st</div>
+        <span>I Place</span>
+      </div>
+      <div class="progress-step" data-step="second">
+        <div class="step-circle">2nd</div>
+        <span>II Place</span>
+      </div>
+      <div class="progress-step" data-step="third">
+        <div class="step-circle">3rd</div>
+        <span>III Place</span>
+      </div>
+      <div class="progress-step" data-step="certificates">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 15L8 19L6 17M12 3C16.97 3 21 7.03 21 12C21 16.97 16.97 21 12 21C7.03 21 3 16.97 3 12C3 7.03 7.03 3 12 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span>Certificates</span>
+      </div>
+    </div>
+
+    <!-- OVERVIEW SECTION -->
+    <section id="overviewSection" class="overview-section active">
+      
+      <!-- Criteria -->
+      <div class="criteria-card glass-card">
+        <div class="card-header">
+          <svg class="header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5M12 12H15M12 16H15M9 12H9.01M9 16H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Judging Criteria</h3>
+        </div>
+        <div class="criteria-list">
+          <div class="criteria-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Letter Formation & Stroke Control</span>
+          </div>
+          <div class="criteria-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 7V4H20V7M9 20H15M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Composition & Balance</span>
+          </div>
+          <div class="criteria-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Readability & Clarity</span>
+          </div>
+          <div class="criteria-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Creativity & Expression</span>
+          </div>
+          <div class="criteria-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 11L12 14L22 4M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Overall Finish & Presentation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Award Categories Navigation -->
+      <div class="awards-navigation">
+        <h2 class="section-heading">Explore Award Categories</h2>
+        <p class="section-description">Journey through each recognition level to discover the exceptional talents</p>
+        
+        <div class="awards-grid">
+          
+          <div class="award-nav-card glass-card gold" data-category="first">
+            <div class="award-medal">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>I Place</h3>
+            <p>Top Excellence</p>
+            <div class="card-count">1 Winner</div>
+            <div class="card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="award-nav-card glass-card silver" data-category="second">
+            <div class="award-medal">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>II Place</h3>
+            <p>Outstanding Achievement</p>
+            <div class="card-count">2 Winners</div>
+            <div class="card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="award-nav-card glass-card bronze" data-category="third">
+            <div class="award-medal">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>III Place</h3>
+            <p>Exceptional Merit</p>
+            <div class="card-count">2 Winners</div>
+            <div class="card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="award-nav-card glass-card certificate" data-category="certificates">
+            <div class="award-medal">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 2V8H20M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Certificates</h3>
+            <p>All Participants</p>
+            <div class="card-count">9 Participants</div>
+            <div class="card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </section>
 
-    <!-- Winners Section -->
-    <section id="firstPlace" class="category-results" style="display:none;">
-      <div class="section-header">
-        <button class="back-btn" onclick="hideCategory()">← Back</button>
-        <h2>Winner</h2>
+    <!-- CATEGORY SECTIONS -->
+    <section id="firstSection" class="category-section">
+      <div class="category-header">
+        <h2>I Place Winners</h2>
+        <p>Celebrating the pinnacle of calligraphic excellence</p>
       </div>
       <div class="entries-grid" id="firstGrid"></div>
+      <div class="navigation-buttons">
+        <button class="nav-btn secondary" data-nav="overview">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Overview
+        </button>
+        <button class="nav-btn primary" data-nav="second">
+          Next: II Place
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </section>
 
-    <section id="secondPlace" class="category-results" style="display:none;">
-      <div class="section-header">
-        <button class="back-btn" onclick="hideCategory()">← Back</button>
+    <section id="secondSection" class="category-section">
+      <div class="category-header">
         <h2>II Place Winners</h2>
+        <p>Outstanding artistry and technical mastery</p>
       </div>
       <div class="entries-grid" id="secondGrid"></div>
+      <div class="navigation-buttons">
+        <button class="nav-btn secondary" data-nav="first">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous: I Place
+        </button>
+        <button class="nav-btn primary" data-nav="third">
+          Next: III Place
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </section>
 
-    <section id="thirdPlace" class="category-results" style="display:none;">
-      <div class="section-header">
-        <button class="back-btn" onclick="hideCategory()">← Back</button>
+    <section id="thirdSection" class="category-section">
+      <div class="category-header">
         <h2>III Place Winners</h2>
+        <p>Exceptional merit and creative expression</p>
       </div>
       <div class="entries-grid" id="thirdGrid"></div>
+      <div class="navigation-buttons">
+        <button class="nav-btn secondary" data-nav="second">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous: II Place
+        </button>
+        <button class="nav-btn primary" data-nav="certificates">
+          View All Participants
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </section>
 
-    <section id="certificatesSection" class="category-results" style="display:none;">
-      <div class="section-header">
-        <button class="back-btn" onclick="hideCategory()">← Back</button>
+    <section id="certificatesSection" class="category-section">
+      <div class="category-header">
         <h2>Certificate Recipients</h2>
+        <p>Honoring dedication and artistic growth</p>
       </div>
       <div class="entries-grid" id="certificatesGrid"></div>
+      <div class="navigation-buttons">
+        <button class="nav-btn secondary" data-nav="third">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous: III Place
+        </button>
+        <button class="nav-btn primary" data-nav="jury">
+          Continue to Jury Message
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </section>
 
-    <!-- Jury Section -->
-    <section class="jury-section glass-card">
-      <div class="jury-content">
+    <!-- JURY & CLOSING SECTIONS -->
+    <section id="jurySection" class="closing-section">
+      <div class="jury-card glass-card">
         <div class="jury-image-container">
           <img src="jury.jpg" alt="Khaleelullah Chemnad" class="jury-image">
-          <div class="jury-image-glow"></div>
         </div>
-        <div class="jury-text">
-          <h3>Jury's Message</h3>
+        <div class="jury-content">
+          <h3>Message from the Jury</h3>
           <p class="jury-message">
             It was a privilege to witness such sincere dedication to Arabic calligraphy. Each work reflected patience, discipline, and personal expression. Beyond rankings, every participant demonstrated growth and respect for tradition. We commend your effort and encourage you to continue refining your craft with humility and passion for future artistic journeys.
           </p>
-          <p class="jury-name">
-            <strong>Khaleelullah Chemnad</strong><br>
-            <span>Chief Jury</span><br>
-            <span>Guinness World Record Holder | International Calligrapher</span>
-          </p>
+          <div class="jury-signature">
+            <strong>Khaleelullah Chemnad</strong>
+            <span>Chief Jury</span>
+            <span>Guinness World Record Holder · International Calligrapher</span>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- Thanks Section -->
-    <section class="thanks-section glass-card">
-      <div class="thanks-logo-container">
+      <div class="thanks-card glass-card">
         <img src="allama-logo.png" alt="Allama SC" class="thanks-logo">
-        <div class="thanks-logo-glow"></div>
+        <h3>Thank You</h3>
+        <p>
+          Allama SC Manhampara sincerely thanks all participants of the Nuqtah Calligraphy Awards for their enthusiastic participation and commendable efforts. Your creativity, discipline, and dedication to the art of Arabic calligraphy greatly enriched this competition and upheld its noble tradition.
+        </p>
+        <p class="announcement">The award distribution date will be announced soon.</p>
       </div>
-      <h3>Thank You</h3>
-      <p>
-        Allama SC Manhampara sincerely thanks all participants of the Nuqtah Calligraphy Awards for their enthusiastic participation and commendable efforts. Your creativity, discipline, and dedication to the art of Arabic calligraphy greatly enriched this competition and upheld its noble tradition. We wish you continued growth and success in your artistic journey.
-      </p>
-      <p class="announcement"><strong>The award distribution date will be announced soon.</strong></p>
+
+      <button class="nav-btn secondary large" data-nav="overview">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12L9 6M3 12L9 18M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Return to Overview
+      </button>
     </section>
 
   </div>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
