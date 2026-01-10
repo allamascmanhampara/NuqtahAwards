@@ -93,6 +93,15 @@ let currentSection = 'overview';
 document.addEventListener('DOMContentLoaded', function() {
     initializeLandingPage();
     initializeResultsPage();
+    
+    // Show landing page by default
+    const landingPage = document.getElementById('landingPage');
+    const resultsPage = document.getElementById('resultsPage');
+    
+    if (landingPage && resultsPage) {
+        landingPage.classList.add('active');
+        resultsPage.classList.remove('active');
+    }
 });
 
 // Landing Page Initialization
@@ -100,7 +109,8 @@ function initializeLandingPage() {
     const viewResultsBtn = document.getElementById('viewResultsBtn');
     
     if (viewResultsBtn) {
-        viewResultsBtn.addEventListener('click', function() {
+        viewResultsBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             showResults();
         });
     }
@@ -111,11 +121,13 @@ function showResults() {
     const landingPage = document.getElementById('landingPage');
     const resultsPage = document.getElementById('resultsPage');
     
-    landingPage.classList.remove('active');
-    resultsPage.classList.add('active');
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (landingPage && resultsPage) {
+        landingPage.classList.remove('active');
+        resultsPage.classList.add('active');
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }
 
 // Results Page Initialization
@@ -413,4 +425,15 @@ const observer = new IntersectionObserver(function(entries) {
 // Observe entry cards for scroll animations
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.entry-card, .award-nav-card, .glass-card');
-    cards.forEach(card =>
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(card);
+    });
+});
+
+// Export functions for global access
+window.toggleDetails = toggleDetails;
+window.navigateToSection = navigateToSection;
+window.downloadCertificate = downloadCertificate;
